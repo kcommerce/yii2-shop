@@ -1,4 +1,4 @@
-name: Checkmarx SAST Scan
+name: Checkmarx SAST Scan with Github Issues
 on: push
 jobs:
   build:
@@ -7,9 +7,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     - name: Checkmarx Action
-      uses: checkmarx-ts/checkmarx-github-action@<version>
+      uses: checkmarx-ts/checkmarx-github-action@v1.1
       with:
-        cxServer: http://113.53.184.16:9080
-        cxUsername: admin
+        cxServer: ${{ secrets.CX_SERVER }}
+        cxUsername: ${{ secrets.CX_USER }}
         cxPassword: ${{ secrets.CX_PASSWORD }}
-        cxTeam: \CxServer
+        cxTeam: ${{ secrets.CX_TEAM }}
+
